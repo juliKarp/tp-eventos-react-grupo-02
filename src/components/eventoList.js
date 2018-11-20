@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
-import { EventoRow } from './eventoRow'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
+import { List, ListItem, ListItemSecondaryAction, ListItemText } from '@material-ui/core';
+import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
+import React, { Component } from 'react';
 import { EventoService } from '../services/eventoService';
 
 export class EventoList extends Component {
@@ -16,13 +15,17 @@ export class EventoList extends Component {
 
     render() {
         return (
-            this.state.eventos.map(evento =>
-                <Card key={'card' + evento.descripcion}>
-                    <CardContent key={'content' + evento.descripcion}>
-                        <EventoRow evento={evento} key={evento.descripcion} />
-                    </CardContent>
-                </Card>
-            )
+            <List dense="true">
+                {this.state.eventos.map(evento =>
+                    <ListItem divider key={'card' + evento.descripcion}>
+                        <ListItemText primary={evento.descripcion} secondary={evento.lugar}/>
+                        <ListItemSecondaryAction>
+                            <AccessAlarmIcon fontSize="small"/>
+                            <ListItemText secondary={evento.inicio}/>
+                        </ListItemSecondaryAction>
+                    </ListItem>
+                )}
+            </List>
         )
     }
 

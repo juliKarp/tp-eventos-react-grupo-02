@@ -1,5 +1,6 @@
-import { MenuList } from '@material-ui/core';
+import { Avatar, ListItemText, MenuList } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
+import indigo from '@material-ui/core/colors/indigo';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
@@ -7,14 +8,15 @@ import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
 import EventIcon from '@material-ui/icons/Event';
 import MenuIcon from '@material-ui/icons/Menu';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-
 import MenuItemLink from './MenuItemLink';
+
 
 
 const drawerWidth = 300;
@@ -42,6 +44,10 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
   },
+  avatar: {
+    color: '#fff',
+    backgroundColor: indigo[800],
+  },
 });
 
 class ResponsiveDrawer extends Component {
@@ -64,7 +70,7 @@ class ResponsiveDrawer extends Component {
   };
 
   render() {
-    const { classes, theme, children } = this.props;
+    const { classes, children } = this.props;
 
     const drawer = (
       <div>
@@ -74,12 +80,10 @@ class ResponsiveDrawer extends Component {
           </IconButton>
         </div>
         <Toolbar>
-          <Typography variant="h7" color="inherit" noWrap>
-            Victor Stone
-          </Typography>
-          <Typography paragraph>
-            victor@starlab.com
-          </Typography>
+          <Avatar alt="Victor Stone" className={classes.avatar}>
+            <AccountCircleIcon fontSize="large"/>
+          </Avatar>
+          <ListItemText primary="Victor Stone" secondary="victor@starlab.com" />
         </Toolbar>
         <Divider />
         <MenuList>
@@ -108,7 +112,6 @@ class ResponsiveDrawer extends Component {
           </Toolbar>
         </AppBar>
         <nav className={classes.drawer}>
-          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
           <Drawer
             open={this.state.mobileOpen}
             onClose={this.handleDrawerToggle}
