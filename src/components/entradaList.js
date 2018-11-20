@@ -15,7 +15,7 @@ export class EntradaList extends Component {
 
     render() {
         return (
-            <List dense="true">
+            <List dense={true}>
                 {this.state.eventos.map(evento =>
                     <ListItem divider key={'card' + evento.descripcion}>
                         <ListItemText primary={evento.descripcion} secondary={evento.lugar}/>

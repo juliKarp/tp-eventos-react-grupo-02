@@ -15,13 +15,14 @@ export class EventoList extends Component {
 
     render() {
         return (
-            <List dense="true">
+            <List dense={true}>
                 {this.state.eventos.map(evento =>
-                    <ListItem divider key={'card' + evento.descripcion}>
-                        <ListItemText primary={evento.descripcion} secondary={evento.lugar}/>
+                    <ListItem button divider key={'card' + evento.descripcion}
+                        onClick={() => this.props.history.push('/evento')}>
+                        <ListItemText primary={evento.descripcion} secondary={evento.lugar} />
                         <ListItemSecondaryAction>
-                            <AccessAlarmIcon fontSize="small"/>
-                            <ListItemText secondary={evento.inicio}/>
+                            <AccessAlarmIcon fontSize="small" />
+                            <ListItemText secondary={evento.inicio} />
                         </ListItemSecondaryAction>
                     </ListItem>
                 )}
