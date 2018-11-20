@@ -1,14 +1,19 @@
-import React, { Component } from 'react';
 import './App.css';
+
+import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+
+import ResponsiveDrawer from './components/ResponsiveDrawer';
 import { EventosRoutes } from './routes';
-import { BrowserRouter } from 'react-router-dom'
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          <EventosRoutes />
+          <ResponsiveDrawer>
+            <EventosRoutes />
+          </ResponsiveDrawer>
         </div>
       </BrowserRouter>
     )

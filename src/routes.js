@@ -1,11 +1,11 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { EventoList } from './components/eventoList';
+import { EntradaList } from './components/entradaList';
 
 export const EventosRoutes = () => (
-    <Router>
-        <Switch>
-            <Route exact path="/" component={EventoList} />
-        </Switch>
-    </Router>
+    <Switch>
+        <Route exact path="/" component={EventoList} />
+        <Route path="/entradas" component={EntradaList} />
+    </Switch>
 )
