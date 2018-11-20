@@ -16,6 +16,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import MenuItemLink from './MenuItemLink';
+import { UsuarioService } from '../services/usuarioService';
 
 
 
@@ -53,8 +54,10 @@ const styles = theme => ({
 class ResponsiveDrawer extends Component {
   constructor(props) {
     super(props)
+    this.usuarioService = new UsuarioService()
     this.state = {
-      mobileOpen: false
+      mobileOpen: false,
+      usuarioLogueado: this.usuarioService.getUsuarioLogueado()
     }
     MenuItemLink.defaultProps = {
       onClick: this.handleDrawerClose
@@ -83,7 +86,7 @@ class ResponsiveDrawer extends Component {
           <Avatar alt="Victor Stone" className={classes.avatar}>
             <AccountCircleIcon fontSize="large"/>
           </Avatar>
-          <ListItemText primary="Victor Stone" secondary="victor@starlab.com" />
+          <ListItemText primary={this.state.usuarioLogueado.nombre} secondary={this.state.usuarioLogueado.mail} />
         </Toolbar>
         <Divider />
         <MenuList>
