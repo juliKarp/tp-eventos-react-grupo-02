@@ -9,7 +9,5 @@ const eventosInteresantes = [
 
 export async function getEventos() { return eventosInteresantes }
 
-export async function getEventoSeleccionado() { return eventosInteresantes[0] }
-
 export async function getEntradas() { return [] }
 

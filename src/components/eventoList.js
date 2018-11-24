@@ -19,7 +19,7 @@ export class EventoList extends Component {
         return (
             <List dense={true}>
                 {this.state.eventos.map(evento =>
-                    <EventoRow evento={evento} />
+                    <EventoRow key={evento.descripcion} evento={evento} />
                 )}
             </List>
         )
