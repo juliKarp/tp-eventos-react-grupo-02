@@ -1,15 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
+import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
+import { ListItem, ListItemSecondaryAction, ListItemText } from '@material-ui/core';
+import { withRouter } from 'react-router-dom'
 
-export class EventoRow extends Component {
-
-    render() {
-        return (
-            <div className="inline">
-                &nbsp;
-                &nbsp;
-                {this.props.evento.descripcion}
-            </div>
-        )
-    }
-
+function EventoRow(props) {
+    const { evento, history } = props
+    return <ListItem button divider key={'card' + evento.descripcion}
+        onClick={() => history.push('/evento')}>
+        <ListItemText primary={evento.descripcion} secondary={evento.lugar} />
+        <ListItemSecondaryAction>
+            <AccessAlarmIcon fontSize="small" />
+            <ListItemText secondary={evento.inicio} />
+        </ListItemSecondaryAction>
+    </ListItem>
 }
+
+export default withRouter(EventoRow)

@@ -7,11 +7,9 @@ const eventosInteresantes = [
     new EventoAbierto("Miranda!", "Niceto Club", "10/12/2018 21:00", "11/12/2018 00:00", 600),
 ]
 
-var eventoSeleccionado
+export async function getEventos() { return eventosInteresantes }
 
-export class EventoService {
+export async function getEventoSeleccionado() { return eventosInteresantes[0] }
 
-    getEventos() { return eventosInteresantes }
+export async function getEntradas() { return [] }
 
-    getEventoSeleccionado() { return eventoSeleccionado }
-}

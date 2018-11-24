@@ -2,8 +2,7 @@ import './App.css';
 
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-
-import ResponsiveDrawer from './components/ResponsiveDrawer';
+import Topbar from './components/Topbar';
 import { EventosRoutes } from './routes';
 
 class App extends Component {
@@ -11,9 +10,9 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <ResponsiveDrawer>
+          <Topbar>
             <EventosRoutes />
-          </ResponsiveDrawer>
+          </Topbar>
         </div>
       </BrowserRouter>
     )
