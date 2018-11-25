@@ -25,7 +25,7 @@ class TheDrawer extends Component {
     constructor(props) {
         super(props)
 
-        this.state = { usuarioLogueado: null }
+        this.state = { usuarioLogueado: null, error: null }
 
         DrawerItemLink.defaultProps = {
             onClick: this.props.closeDrawer
@@ -33,8 +33,12 @@ class TheDrawer extends Component {
     }
 
     async componentDidMount() {
-        const usuarioLogueado = await getUsuarioLogueado()
-        this.setState({ usuarioLogueado })
+        try {
+            const usuarioLogueado = await getUsuarioLogueado()
+            this.setState({ usuarioLogueado, error: null })
+        } catch (error) {
+            this.setState({ error })
+        }
     }
 
     render() {

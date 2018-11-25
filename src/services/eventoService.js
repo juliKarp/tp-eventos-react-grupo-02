@@ -1,4 +1,5 @@
 import { EventoAbierto } from '../domain/eventoAbierto';
+import { Entrada } from '../domain/entrada';
 
 const eventosInteresantes = [
     new EventoAbierto("Holabalooza", "Elefantodromo San Isidro", "05/06/2019 12:00", "07/06/2019 23:59", 10000),
@@ -7,9 +8,18 @@ const eventosInteresantes = [
     new EventoAbierto("Miranda!", "Niceto Club", "10/12/2018 21:00", "11/12/2018 00:00", 600),
 ]
 
+
+const entradas = [
+    new Entrada(eventosInteresantes[0], 2),
+    new Entrada(eventosInteresantes[1], 3),
+    new Entrada(eventosInteresantes[2], 1),
+    new Entrada(eventosInteresantes[3], 2),
+]
+
 export async function getEventos() { return eventosInteresantes }
 
 export async function getEventoSeleccionado() { return eventosInteresantes[0] }
 
-export async function getEntradas() { return [] }
+export async function getEntradas() { return entradas }
 
+export async function devolverEntrada(entrada) {  }

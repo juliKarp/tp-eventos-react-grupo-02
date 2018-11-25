@@ -7,15 +7,13 @@ import { EventosRoutes } from './routes';
 
 class App extends Component {
   render() {
-    return (
-      <BrowserRouter>
-        <div className="App">
-          <Topbar>
-            <EventosRoutes />
-          </Topbar>
-        </div>
-      </BrowserRouter>
-    )
+    return <BrowserRouter>
+      <div className="App">
+        <Topbar>
+          <EventosRoutes />
+        </Topbar>
+      </div>
+    </BrowserRouter>
   }
 }
 

@@ -7,19 +7,23 @@ export class EventoList extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {eventos: []}
+        this.state = { eventos: [], error: null }
     }
 
     async componentDidMount() {
-        const eventos = await getEventos()
-        this.setState({eventos})
+        try {
+            const eventos = await getEventos()
+            this.setState({ eventos, error: null })
+        } catch (error) {
+            this.setState({ error })
+        }
     }
 
     render() {
         return (
             <List dense={true}>
                 {this.state.eventos.map(evento =>
-                    <EventoRow evento={evento} />
+                    <EventoRow key={'card' + evento.descripcion} evento={evento} />
                 )}
             </List>
         )

@@ -5,8 +5,7 @@ import { withRouter } from 'react-router-dom'
 
 function EventoRow(props) {
     const { evento, history } = props
-    return <ListItem button divider key={'card' + evento.descripcion}
-        onClick={() => history.push('/evento')}>
+    return <ListItem button divider onClick={() => history.push('/evento')}>
         <ListItemText primary={evento.descripcion} secondary={evento.lugar} />
         <ListItemSecondaryAction>
             <AccessAlarmIcon fontSize="small" />
