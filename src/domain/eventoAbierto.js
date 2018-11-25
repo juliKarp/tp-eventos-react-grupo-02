@@ -11,7 +11,6 @@ export class EventoAbierto {
     static fromJson(json) {
         if (!json) { return }
         var evento = new EventoAbierto()
-        evento.tipo = json.tipo
         evento.id = json.id
         evento.descripcion = json.nombre
         evento.lugar = json.locacion.nombre

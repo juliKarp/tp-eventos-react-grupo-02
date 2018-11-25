@@ -19,14 +19,17 @@ const entradas = [
 export async function getEventos(usuarioId) {
     const respuesta = await await fetch(REST_SERVER_URL + "/eventosDeInteres/1")
     const eventosJson = await respuesta.json()
-    return eventosJson.map(evento =>
-        EventoAbierto.fromJson(evento)
+    return eventosJson.map(eventoJson =>
+        EventoAbierto.fromJson(eventoJson)
     );
 }
 
-export async function getEntradas() {
-    await timeout()
-    return entradas
+export async function getEntradas(usuarioId) {
+    const respuesta = await await fetch(REST_SERVER_URL + "/entradas/1")
+    const entradasJson = await respuesta.json()
+    return entradasJson.map(entradaJson =>
+        Entrada.fromJson(entradaJson)
+    );
 }
 
 export async function devolverEntrada(entrada) {
