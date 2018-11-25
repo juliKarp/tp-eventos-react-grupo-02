@@ -13,12 +13,12 @@ const styles = theme => ({
 });
 
 function DrawerInfo(props) {
-    const { classes, usuario: { nombreUsuario, email } } = props
+    const { classes, usuario: { nombreApellido, email } } = props
     return <Toolbar>
         <Avatar alt="Victor Stone" className={classes.avatar}>
             <AccountCircleIcon fontSize="large" />
         </Avatar>
-        <ListItemText primary={nombreUsuario} secondary={email} />
+        <ListItemText primary={nombreApellido} secondary={email} />
     </Toolbar>;
 }
 
