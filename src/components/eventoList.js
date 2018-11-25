@@ -23,11 +23,7 @@ export class EventoList extends Component {
         return (
             <List dense={true}>
                 {this.state.eventos.map(evento =>
-<<<<<<< HEAD
-                    <EventoRow key={'card' + evento.descripcion} evento={evento} />
-=======
                     <EventoRow key={evento.descripcion} evento={evento} />
->>>>>>> 92c0f9b894d266a341b66bd3cb60704bfa901bbc
                 )}
             </List>
         )
