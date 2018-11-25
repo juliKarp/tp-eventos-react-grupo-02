@@ -7,7 +7,7 @@ export class EventoList extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { eventos: [], error: null }
+        this.state = { eventos: [] }
     }
 
     async componentDidMount() {

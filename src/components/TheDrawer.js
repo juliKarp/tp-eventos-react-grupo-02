@@ -25,8 +25,8 @@ class TheDrawer extends Component {
     constructor(props) {
         super(props)
 
-        this.state = { usuarioLogueado: null, error: null }
-
+        this.state = { }
+        
         DrawerItemLink.defaultProps = {
             onClick: this.props.closeDrawer
         }
@@ -43,7 +43,6 @@ class TheDrawer extends Component {
 
     render() {
         const { classes, toggleDrawer, closeDrawer, isOpen } = this.props
-        const { usuarioLogueado } = this.state;
         return <Drawer open={isOpen} onClose={toggleDrawer}>
             <div className={classes.toolbar}>
                 <IconButton onClick={closeDrawer}>
@@ -51,7 +50,7 @@ class TheDrawer extends Component {
                 </IconButton>
             </div>
             <Divider />
-            {usuarioLogueado && <DrawerInfo usuario={usuarioLogueado} />}
+            {this.state.usuarioLogueado && <DrawerInfo usuario={this.state.usuarioLogueado} />}
             <Divider />
             <MenuList>
                 <DrawerItemLink to="/" primary="Eventos Interesantes" icon={<EventIcon />} />

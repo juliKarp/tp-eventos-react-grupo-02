@@ -1,16 +1,19 @@
-import React, { Component } from 'react';
-import EventoView from './eventoView';
+import React, { Fragment } from 'react';
+import DetallesEvento from './detallesEvento';
 import { Button } from '@material-ui/core';
+import { comprarEntrada } from '../services/eventoService';
 
-export class ComprarEntrada extends Component {
 
-    render() {
-        return (
-            <div>
-                <EventoView evento={this.props.location.evento} />
-                <Button variant="contained" onClick={() => this.props.history.push('/')}>Volver</Button>
-                <Button variant="contained" color="primary" >Comprar</Button>
-            </div>
-        )
+
+export function ComprarEntrada(props) {
+
+    const { location: { evento }, history } = props;
+    if (!evento) {
+        history.push('/')
     }
+    return <Fragment>
+        {evento && <DetallesEvento evento={evento} />}
+        <Button variant="contained" onClick={() => history.push('/')}>Volver</Button>
+        <Button variant="contained" color="primary" onClick={() => comprarEntrada(evento)}>Comprar</Button>
+    </Fragment>
 }

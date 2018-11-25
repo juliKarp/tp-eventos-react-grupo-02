@@ -12,4 +12,5 @@ export class Entrada {
     devolverUna(cantidad) {
         return new Entrada(this.evento, this.cantidad-1)
     }
+    
 }

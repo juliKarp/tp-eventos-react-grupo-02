@@ -25,7 +25,7 @@ const styles = {
     },
 };
 
-function EventoView(props) {
+function DetallesEvento(props) {
     const { classes, evento } = props;
 
     return (
@@ -50,8 +50,8 @@ function EventoView(props) {
     );
 }
 
-EventoView.propTypes = {
+DetallesEvento.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(EventoView);
+export default withStyles(styles)(DetallesEvento);

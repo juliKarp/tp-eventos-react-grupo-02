@@ -13,7 +13,6 @@ const entradas = [
     new Entrada(eventosInteresantes[0], 2),
     new Entrada(eventosInteresantes[1], 3),
     new Entrada(eventosInteresantes[2], 1),
-    new Entrada(eventosInteresantes[3], 2),
 ]
 
 export async function getEventos() { return eventosInteresantes }
@@ -23,3 +22,12 @@ export async function getEventoSeleccionado() { return eventosInteresantes[0] }
 export async function getEntradas() { return entradas }
 
 export async function devolverEntrada(entrada) {  }
+
+export async function comprarEntrada(evento) {
+    const entrada = entradas.find(entrada => entrada.evento === evento)
+    if (entrada) {
+        entrada.cantidad++
+    } else {
+        entradas.push(new Entrada(evento, 1))
+    }
+}
