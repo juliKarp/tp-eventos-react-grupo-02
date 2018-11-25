@@ -18,8 +18,12 @@ const entradas = [
 
 export async function getEventos() { return eventosInteresantes }
 
+<<<<<<< HEAD
 export async function getEventoSeleccionado() { return eventosInteresantes[0] }
 
 export async function getEntradas() { return entradas }
+=======
+export async function getEntradas() { return [] }
+>>>>>>> 92c0f9b894d266a341b66bd3cb60704bfa901bbc
 
 export async function devolverEntrada(entrada) {  }

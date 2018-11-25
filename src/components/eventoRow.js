@@ -5,13 +5,17 @@ import { withRouter } from 'react-router-dom'
 
 function EventoRow(props) {
     const { evento, history } = props
-    return <ListItem button divider onClick={() => history.push('/evento')}>
-        <ListItemText primary={evento.descripcion} secondary={evento.lugar} />
-        <ListItemSecondaryAction>
-            <AccessAlarmIcon fontSize="small" />
-            <ListItemText secondary={evento.inicio} />
-        </ListItemSecondaryAction>
-    </ListItem>
+    return (
+        <ListItem button divider onClick={() => history.push(
+            { pathname: '/evento', evento: evento }
+        )}>
+            <ListItemText primary={evento.descripcion} secondary={evento.lugar} />
+            <ListItemSecondaryAction>
+                <AccessAlarmIcon fontSize="small" />
+                <ListItemText secondary={evento.inicio} />
+            </ListItemSecondaryAction>
+        </ListItem>
+    )
 }
 
 export default withRouter(EventoRow)
