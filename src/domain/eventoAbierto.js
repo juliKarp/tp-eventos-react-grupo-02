@@ -7,4 +7,17 @@ export class EventoAbierto {
         this.fin = fin
         this.precio = precio
     }
+
+    static fromJson(json) {
+        if (!json) { return }
+        var evento = new EventoAbierto()
+        evento.tipo = json.tipo
+        evento.id = json.id
+        evento.descripcion = json.nombre
+        evento.lugar = json.locacion.nombre
+        evento.inicio = json.fechaDesde
+        evento.fin = json.fechaHasta
+        evento.precio = json.precio
+        return evento
+    }
 }

@@ -1,5 +1,6 @@
 import { EventoAbierto } from '../domain/eventoAbierto';
 import { Entrada } from '../domain/entrada';
+import { REST_SERVER_URL } from './constants';
 
 const eventosInteresantes = [
     new EventoAbierto("Holabalooza", "Elefantodromo San Isidro", "05/06/2019 12:00", "07/06/2019 23:59", 10000),
@@ -15,9 +16,13 @@ const entradas = [
     new Entrada(eventosInteresantes[2], 1),
 ]
 
-export async function getEventos() { return eventosInteresantes }
-
-export async function getEventoSeleccionado() { return eventosInteresantes[0] }
+export async function getEventos(usuarioId) {
+    const respuesta = await await fetch(REST_SERVER_URL + "/eventosDeInteres/1")
+    const eventosJson = await respuesta.json()
+    return eventosJson.map(evento =>
+        EventoAbierto.fromJson(evento)
+    );
+}
 
 export async function getEntradas() { return entradas }
 

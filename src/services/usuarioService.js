@@ -1,5 +1,8 @@
 import { Usuario } from '../domain/usuario';
+import { REST_SERVER_URL } from './constants';
 
-const usuario = new Usuario("Juancito Fuentes", "juani2513@gmail.com", 1000)
-
-export async function getUsuarioLogueado() { return usuario }
+export async function getUsuarioLogueado() {
+    const respuesta = await fetch(REST_SERVER_URL + "/perfil/1")
+    const usuarioJson = await respuesta.json()
+    return Usuario.fromJson(usuarioJson)
+}

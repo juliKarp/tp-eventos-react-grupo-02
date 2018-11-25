@@ -34,16 +34,17 @@ function DetallesEvento(props) {
                 <Typography variant="h5" component="h2">
                     {evento.descripcion}
                 </Typography>
-                <Typography component="p">
+                <Typography component="p" align="left">
                     <LocationOnIcon fontSize="small" />
                     {evento.lugar}
-                    <br/>
+                </Typography>
+                <Typography component="p" align="left">
                     <AccessAlarmIcon fontSize="small" />
                     {evento.inicio + " - " + evento.fin}
-                    <br/>
+                </Typography>
+                <Typography component="p" align="left">
                     <AttachMoneyIcon fontSize="small" />
                     {evento.precio}
-                    <br/>
                 </Typography>
             </CardContent>
         </Card>
