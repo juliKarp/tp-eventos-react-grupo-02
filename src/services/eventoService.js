@@ -24,15 +24,25 @@ export async function getEventos(usuarioId) {
     );
 }
 
-export async function getEntradas() { return entradas }
+export async function getEntradas() {
+    await timeout()
+    return entradas
+}
 
-export async function devolverEntrada(entrada) {  }
+export async function devolverEntrada(entrada) {
+    await timeout()
+}
 
 export async function comprarEntrada(evento) {
+    await timeout()
     const entrada = entradas.find(entrada => entrada.evento === evento)
     if (entrada) {
         entrada.cantidad++
     } else {
         entradas.push(new Entrada(evento, 1))
     }
+}
+
+function timeout() {
+    return new Promise(resolve => setTimeout(resolve, 400))
 }
