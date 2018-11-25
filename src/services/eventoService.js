@@ -1,5 +1,5 @@
-import { EventoAbierto } from '../domain/eventoAbierto';
-import { Entrada } from '../domain/entrada';
+import { EventoAbierto } from '../domain/eventoAbierto'
+import { Entrada } from '../domain/entrada'
 
 const eventosInteresantes = [
     new EventoAbierto("Holabalooza", "Elefantodromo San Isidro", "05/06/2019 12:00", "07/06/2019 23:59", 10000),
@@ -15,19 +15,35 @@ const entradas = [
     new Entrada(eventosInteresantes[2], 1),
 ]
 
-export async function getEventos() { return eventosInteresantes }
+export async function getEventos() {
+    await timeout()
+    return eventosInteresantes
+}
 
-export async function getEventoSeleccionado() { return eventosInteresantes[0] }
+export async function getEventoSeleccionado() {
+    await timeout()
+    return eventosInteresantes[0]
+}
 
-export async function getEntradas() { return entradas }
+export async function getEntradas() {
+    await timeout()
+    return entradas
+}
 
-export async function devolverEntrada(entrada) {  }
+export async function devolverEntrada(entrada) {
+    await timeout()
+}
 
 export async function comprarEntrada(evento) {
+    await timeout()
     const entrada = entradas.find(entrada => entrada.evento === evento)
     if (entrada) {
         entrada.cantidad++
     } else {
         entradas.push(new Entrada(evento, 1))
     }
+}
+
+function timeout() {
+    return new Promise(resolve => setTimeout(resolve, 400))
 }

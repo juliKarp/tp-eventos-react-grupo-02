@@ -4,12 +4,13 @@ import { devolverEntrada, getEntradas } from '../services/eventoService';
 import { getUsuarioLogueado } from '../services/usuarioService';
 import EntradaRow from './entradaRow';
 import Fotter from './Fotter';
+import Loading from './loading';
 
 export class EntradaList extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {entradas: []}
+        this.state = { entradas: [], loading: true }
 
         EntradaRow.defaultProps = { devolucionEntrada: this.devolucionEntrada }
     }
@@ -19,37 +20,35 @@ export class EntradaList extends Component {
             const usuario = await getUsuarioLogueado()
             const entradas = await getEntradas()
 
-            this.setState({saldo: usuario.saldo, entradas, error: null })
+            this.setState({ saldo: usuario.saldo, entradas, error: null })
         } catch (error) {
             this.setState({ error })
         }
-
-        try {
-            const entradas = await getEntradas()
-            this.setState({ entradas, error: null })
-        } catch (error) {
-            this.setState({ error })
-        }
+        this.setState({loading: false})
     }
 
     devolucionEntrada = async (entrada) => {
-        try {
-            await devolverEntrada(entrada)
-            const nuevaLista = this.state.entradas
-                .map(en => en === entrada ? entrada.devolverUna() : en)
-                .filter(en => en.cantidad !== 0)
-            this.setState({ entradas: nuevaLista, error: null })
+        if (!this.state.loading) {
+            this.setState({ loading: true })
+            try {
+                await devolverEntrada(entrada)
+                const nuevaLista = this.state.entradas
+                    .map(en => en === entrada ? entrada.devolverUna() : en)
+                    .filter(en => en.cantidad !== 0)
+                this.setState({ entradas: nuevaLista, error: null })
 
-            const usuario = await getUsuarioLogueado()
-            this.setState({saldo: usuario.saldo})
-    
-        } catch (error) {
-            this.setState({ error })
+                const usuario = await getUsuarioLogueado()
+                this.setState({ saldo: usuario.saldo })
+
+            } catch (error) {
+                this.setState({ error })
+            }
+            this.setState({loading: false})
         }
     }
 
     render() {
-        const { saldo } = this.state
+        const { saldo, loading } = this.state
         return (
             <Fragment>
                 <List dense={true}>
@@ -58,6 +57,7 @@ export class EntradaList extends Component {
                     )}
                 </List>
                 <Fotter saldo={saldo} />
+                {loading && <Loading />}
             </Fragment>
         )
     }
