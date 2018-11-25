@@ -12,6 +12,9 @@ const styles = theme => ({
     toolbar: {
         backgroundColor: theme.palette.primary.main,
     },
+    text: {
+        color: theme.palette.common.white,
+    },
 });
 
 function DrawerInfo(props) {
@@ -20,7 +23,7 @@ function DrawerInfo(props) {
         <Avatar className={classes.avatar}>
             <AccountCircleIcon fontSize="large" />
         </Avatar>
-        <ListItemText primary={nombreApellido} secondary={email} />
+        <ListItemText classes={{ primary: classes.text, secondary: classes.text }} primary={nombreApellido} secondary={email} />
     </Toolbar>
 }
 

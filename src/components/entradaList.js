@@ -35,12 +35,13 @@ export class EntradaList extends Component {
                 await devolverEntrada(entrada)
                 const nuevaLista = this.state.entradas
                     .map(en => en === entrada ? entrada.devolverUna() : en)
-                    .filter(en => en.cantidad !== 0)
+                    .filter(en => en.cantidad > 0)
+                console.log(this.state.entradas);
+                console.log(nuevaLista);
+                
                 this.setState({ entradas: nuevaLista, error: null })
 
-                const usuario = await getUsuarioLogueado()
-                console.log(usuario.saldo);
-                
+                const usuario = await getUsuarioLogueado()              
                 this.setState({ saldo: usuario.saldo })
 
             } catch (error) {

@@ -1,6 +1,6 @@
 import { EventoAbierto } from '../domain/eventoAbierto';
 import { Entrada } from '../domain/entrada';
-import { jsonFromEndpoint } from './service';
+import { jsonFromEndpoint, jsonFromDelete } from './service';
 
 const eventosInteresantes = [
     new EventoAbierto("Holabalooza", "Elefantodromo San Isidro", "05/06/2019 12:00", "07/06/2019 23:59", 10000),
@@ -20,18 +20,19 @@ export async function getEventos(usuarioId) {
     const eventosJson = await jsonFromEndpoint("/eventosDeInteres/1")
     return eventosJson.map(eventoJson =>
         EventoAbierto.fromJson(eventoJson)
-    );
+    )
 }
 
 export async function getEntradas(usuarioId) {
     const entradasJson = await jsonFromEndpoint("/entradas/1")
     return entradasJson.map(entradaJson =>
         Entrada.fromJson(entradaJson)
-    );
+    )
 }
 
 export async function devolverEntrada(entrada) {
-    await timeout()
+    const deleteJson = await jsonFromDelete("/devolverEntrada", { usuarioId: 1, eventoId: entrada.evento.id })
+    return deleteJson
 }
 
 export async function comprarEntrada(evento) {
