@@ -19,11 +19,12 @@ export default class ErrorBar extends Component {
     }
 
     obtenerMensaje(error) {
-        console.log(error);
         var mensaje
         // eslint-disable-next-line
         if (error == 'TypeError: Failed to fetch') {
             mensaje = 'No se pudo comunicar con el servidor.'
+        } else if (error.message) {
+            mensaje = error.message
         } else {
             mensaje = 'ERROR!'
         }

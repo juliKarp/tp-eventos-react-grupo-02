@@ -1,8 +1,7 @@
 import { Usuario } from '../domain/usuario';
-import { REST_SERVER_URL } from './constants';
+import { jsonFromEndpoint } from './service';
 
 export async function getUsuarioLogueado() {
-    const respuesta = await fetch(REST_SERVER_URL + "/perfil/1")
-    const usuarioJson = await respuesta.json()
+    const usuarioJson = await jsonFromEndpoint("/perfil/1")
     return Usuario.fromJson(usuarioJson)
 }
