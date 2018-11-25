@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { withStyles, CircularProgress } from '@material-ui/core';
 
 const styles = theme => ({
@@ -18,10 +18,12 @@ const styles = theme => ({
     }
 });
 
-function Loading(props) {
-    const { classes } = props;
-    return <div className={classes.loading}>
-        <CircularProgress className={classes.progress} />
-    </div>
+function LoadingIndicator(props) {
+    const { classes, loading } = props;
+    return <Fragment>
+        {loading && <div className={classes.loading}>
+            <CircularProgress className={classes.progress} />
+        </div>}
+    </Fragment>
 }
-export default withStyles(styles, { withTheme: true })(Loading)
+export default withStyles(styles, { withTheme: true })(LoadingIndicator)

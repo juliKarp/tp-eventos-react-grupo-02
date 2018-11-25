@@ -4,7 +4,8 @@ import { devolverEntrada, getEntradas } from '../services/eventoService';
 import { getUsuarioLogueado } from '../services/usuarioService';
 import EntradaRow from './entradaRow';
 import Fotter from './Fotter';
-import Loading from './loading';
+import LoadingIndicator from './LoadingIndicator';
+import ErrorBar from './errorBar';
 
 export class EntradaList extends Component {
 
@@ -48,7 +49,7 @@ export class EntradaList extends Component {
     }
 
     render() {
-        const { saldo, loading } = this.state
+        const { saldo, loading, error } = this.state
         return (
             <Fragment>
                 <List dense={true}>
@@ -57,7 +58,8 @@ export class EntradaList extends Component {
                     )}
                 </List>
                 <Fotter saldo={saldo} />
-                {loading && <Loading />}
+                <LoadingIndicator loading={loading} />
+                <ErrorBar error={error}/>
             </Fragment>
         )
     }

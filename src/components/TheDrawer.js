@@ -10,6 +10,9 @@ import EventIcon from '@material-ui/icons/Event';
 import DrawerItemLink from './DrawerItemLink';
 import { withStyles } from '@material-ui/core/styles';
 import DrawerInfo from './DrawerInfo';
+import LoadingIndicator from './LoadingIndicator';
+import ErrorBar from './errorBar';
+import { Usuario } from '../domain/usuario';
 
 const styles = theme => ({
     toolbar: {
@@ -25,7 +28,7 @@ class TheDrawer extends Component {
     constructor(props) {
         super(props)
 
-        this.state = { }
+        this.state = { loading: true, usuarioLogueado: new Usuario() }
         
         DrawerItemLink.defaultProps = {
             onClick: this.props.closeDrawer
@@ -39,10 +42,12 @@ class TheDrawer extends Component {
         } catch (error) {
             this.setState({ error })
         }
+        this.setState({ loading: false })
     }
 
     render() {
         const { classes, toggleDrawer, closeDrawer, isOpen } = this.props
+        const { loading, error } = this.state
         return <Drawer open={isOpen} onClose={toggleDrawer}>
             <div className={classes.toolbar}>
                 <IconButton onClick={closeDrawer}>
@@ -50,12 +55,14 @@ class TheDrawer extends Component {
                 </IconButton>
             </div>
             <Divider />
-            {this.state.usuarioLogueado && <DrawerInfo usuario={this.state.usuarioLogueado} />}
+            <DrawerInfo usuario={this.state.usuarioLogueado} />
             <Divider />
             <MenuList>
                 <DrawerItemLink to="/" primary="Eventos Interesantes" icon={<EventIcon />} />
                 <DrawerItemLink to="/entradas" primary="Mis Entradas" icon={<CreditCardIcon />} />
             </MenuList>
+            <LoadingIndicator loading={loading} />
+            <ErrorBar error={error}/>
         </Drawer>
     }
 }

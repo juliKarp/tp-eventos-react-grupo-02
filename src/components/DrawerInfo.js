@@ -1,25 +1,27 @@
-import React from 'react';
 import { Avatar, ListItemText } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { withStyles } from '@material-ui/core/styles';
-import indigo from '@material-ui/core/colors/indigo';
+import React from 'react';
 
 const styles = theme => ({
     avatar: {
-        color: '#fff',
-        backgroundColor: indigo[800],
+        color: theme.palette.primary.main,
+        backgroundColor: theme.palette.background.default,
+    },
+    toolbar: {
+        backgroundColor: theme.palette.primary.main,
     },
 });
 
 function DrawerInfo(props) {
     const { classes, usuario: { nombreApellido, email } } = props
-    return <Toolbar>
-        <Avatar alt="Victor Stone" className={classes.avatar}>
+    return <Toolbar className={classes.toolbar}>
+        <Avatar className={classes.avatar}>
             <AccountCircleIcon fontSize="large" />
         </Avatar>
         <ListItemText primary={nombreApellido} secondary={email} />
-    </Toolbar>;
+    </Toolbar>
 }
 
 export default withStyles(styles, { withTheme: true })(DrawerInfo);
