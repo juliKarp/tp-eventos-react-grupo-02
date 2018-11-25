@@ -39,6 +39,8 @@ export class EntradaList extends Component {
                 this.setState({ entradas: nuevaLista, error: null })
 
                 const usuario = await getUsuarioLogueado()
+                console.log(usuario.saldo);
+                
                 this.setState({ saldo: usuario.saldo })
 
             } catch (error) {
