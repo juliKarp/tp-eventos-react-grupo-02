@@ -37,8 +37,6 @@ export class EntradaList extends Component {
                 const nuevaLista = this.state.entradas
                     .map(en => en === entrada ? entrada.devolverUna() : en)
                     .filter(en => en.cantidad > 0)
-                console.log(this.state.entradas);
-                console.log(nuevaLista);
                 
                 this.setState({ entradas: nuevaLista, error: null })
 

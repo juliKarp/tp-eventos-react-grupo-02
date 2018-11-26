@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import { Grid } from '@material-ui/core';
 
 const styles = {
     card: {
@@ -28,7 +29,7 @@ const styles = {
 function DetallesEvento(props) {
     const { classes, evento } = props;
 
-    return (
+    return (<Grid item xs={12}>
         <Card className={classes.card}>
             <CardContent>
                 <Typography variant="h5" component="h2">
@@ -48,6 +49,7 @@ function DetallesEvento(props) {
                 </Typography>
             </CardContent>
         </Card>
+        </Grid>
     );
 }
 
