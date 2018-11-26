@@ -25,6 +25,8 @@ export default class ErrorBar extends Component {
             mensaje = 'No se pudo comunicar con el servidor.'
         } else if (error.message) {
             mensaje = error.message
+        } else if (error === 'Debe elegir la cantidad de entradas') {
+            mensaje = error
         } else {
             mensaje = 'ERROR!'
         }

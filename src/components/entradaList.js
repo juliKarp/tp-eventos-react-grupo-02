@@ -6,12 +6,13 @@ import EntradaRow from './entradaRow';
 import Fotter from './Fotter';
 import LoadingIndicator from './LoadingIndicator';
 import ErrorBar from './errorBar';
+import SuccessBar from './successBar';
 
 export class EntradaList extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { entradas: [], loading: true }
+        this.state = { entradas: [], loading: true, success: false }
 
         EntradaRow.defaultProps = { devolucionEntrada: this.devolucionEntrada }
     }
@@ -30,7 +31,7 @@ export class EntradaList extends Component {
 
     devolucionEntrada = async (entrada) => {
         if (!this.state.loading) {
-            this.setState({ loading: true })
+            this.setState({ loading: true, success: false })
             try {
                 await devolverEntrada(entrada)
                 const nuevaLista = this.state.entradas
@@ -42,17 +43,17 @@ export class EntradaList extends Component {
                 this.setState({ entradas: nuevaLista, error: null })
 
                 const usuario = await getUsuarioLogueado()              
-                this.setState({ saldo: usuario.saldo })
+                this.setState({ saldo: usuario.saldo, success: "Entrada devuelta con éxito" })
 
             } catch (error) {
                 this.setState({ error })
             }
-            this.setState({loading: false})
+            this.setState({ loading: false })
         }
     }
 
     render() {
-        const { saldo, loading, error } = this.state
+        const { saldo, loading, error, success } = this.state
         return (
             <Fragment>
                 <List dense={true}>
@@ -63,6 +64,7 @@ export class EntradaList extends Component {
                 <Fotter saldo={saldo} />
                 <LoadingIndicator loading={loading} />
                 <ErrorBar error={error}/>
+                <SuccessBar success={success} />
             </Fragment>
         )
     }
