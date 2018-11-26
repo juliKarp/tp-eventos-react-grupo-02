@@ -41,7 +41,7 @@ export class ComprarEntrada extends Component {
         if (!this.state.loading) {
             this.setState({ loading: true })
             try {
-                await comprarEntrada(evento)
+                await comprarEntrada(evento,this.state.cantidadDeseada)
             } catch (error) {
                 this.setState({ error })
             }

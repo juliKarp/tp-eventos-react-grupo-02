@@ -16,6 +16,6 @@ export class Entrada {
     static fromJson(json) {
         if (!json) { return }
         var evento = EventoAbierto.fromJson(json.evento)
-        return new Entrada(evento,1)
+        return new Entrada(evento,json.cantidad)
     }
 }
