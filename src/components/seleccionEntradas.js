@@ -40,8 +40,8 @@ export class SeleccionEntradas extends Component {
 
     async compraEntrada(evento) {
         if (!this.state.loading) {
+            this.setState({ loading: true, error: false, success: false })
             if (this.state.cantidadDeseada > 0) {
-                this.setState({ loading: true, success: false })
                 try {
                     await comprarEntrada(evento, this.state.cantidadDeseada)
                     this.setState({ success: "Entrada comprada con éxito" })
@@ -50,7 +50,7 @@ export class SeleccionEntradas extends Component {
                 }
                 this.setState({ loading: false })
             } else {
-                this.setState({ error: 'Debe elegir la cantidad de entradas' })
+                this.setState({ loading: false, error: 'Debe elegir la cantidad de entradas' })
             }
         }
     }
