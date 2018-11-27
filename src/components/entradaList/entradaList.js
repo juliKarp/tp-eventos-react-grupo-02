@@ -1,13 +1,13 @@
 import { List } from '@material-ui/core';
 import React, { Component } from 'react';
-import { devolverEntrada, getEntradas } from '../services/eventoService';
-import { getUsuarioLogueado } from '../services/usuarioService';
+import { devolverEntrada, getEntradas } from '../../services/eventoService';
+import { getUsuarioLogueado } from '../../services/usuarioService';
 import EntradaRow from './entradaRow';
 import Fotter from './Fotter';
-import LoadingIndicator from './LoadingIndicator';
-import ErrorBar from './errorBar';
-import SuccessBar from './successBar';
-import Topbar from './Topbar';
+import LoadingIndicator from '../notifications/LoadingIndicator';
+import ErrorBar from '../notifications/errorBar';
+import SuccessBar from '../notifications/successBar';
+import Topbar from '../Topbar';
 
 export class EntradaList extends Component {
 

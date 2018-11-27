@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getUsuarioLogueado } from '../services/usuarioService';
+import { getUsuarioLogueado } from '../../services/usuarioService';
 import { MenuList } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
@@ -10,9 +10,9 @@ import EventIcon from '@material-ui/icons/Event';
 import DrawerItemLink from './DrawerItemLink';
 import { withStyles } from '@material-ui/core/styles';
 import DrawerInfo from './DrawerInfo';
-import LoadingIndicator from './LoadingIndicator';
-import ErrorBar from './errorBar';
-import { Usuario } from '../domain/usuario';
+import LoadingIndicator from '../notifications/LoadingIndicator';
+import ErrorBar from '../notifications/errorBar';
+import { Usuario } from '../../domain/usuario';
 
 const styles = theme => ({
     toolbar: {

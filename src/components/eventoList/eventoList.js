@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { List } from '@material-ui/core';
-import { getEventos } from '../services/eventoService';
+import { getEventos } from '../../services/eventoService';
 import EventoRow from './eventoRow';
-import LoadingIndicator from './LoadingIndicator';
-import ErrorBar from './errorBar';
-import Topbar from './Topbar';
+import LoadingIndicator from '../notifications/LoadingIndicator';
+import ErrorBar from '../notifications/errorBar';
+import Topbar from '../Topbar';
 
 export class EventoList extends Component {
 

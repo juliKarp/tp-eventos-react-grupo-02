@@ -8,7 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import TheDrawer from './TheDrawer';
+import TheDrawer from './drawer/TheDrawer';
 
 const drawerWidth = 300;
 

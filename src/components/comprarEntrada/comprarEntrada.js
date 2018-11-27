@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DetallesEvento from './detallesEvento';
 import { SeleccionEntradas } from './seleccionEntradas';
 import { Grid } from '@material-ui/core';
-import Topbar from './Topbar';
+import Topbar from '../Topbar';
 
 export class ComprarEntrada extends Component {
     componentDidMount() {

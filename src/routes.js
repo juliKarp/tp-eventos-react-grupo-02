@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { EventoList } from './components/eventoList';
-import { EntradaList } from './components/entradaList';
-import { ComprarEntrada } from './components/comprarEntrada';
+import { EventoList } from './components/eventoList/eventoList';
+import { EntradaList } from './components/entradaList/entradaList';
+import { ComprarEntrada } from './components/comprarEntrada/comprarEntrada';
 
 export const EventosRoutes = () => (
     <Switch>

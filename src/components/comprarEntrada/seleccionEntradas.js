@@ -3,10 +3,10 @@ import { Grid, IconButton, Button } from '@material-ui/core';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import { comprarEntrada } from '../services/eventoService';
-import LoadingIndicator from './LoadingIndicator';
-import ErrorBar from './errorBar';
-import SuccessBar from './successBar';
+import { comprarEntrada } from '../../services/eventoService';
+import LoadingIndicator from '../notifications/LoadingIndicator';
+import ErrorBar from '../notifications/errorBar';
+import SuccessBar from '../notifications/successBar';
 
 export class SeleccionEntradas extends Component {
 
