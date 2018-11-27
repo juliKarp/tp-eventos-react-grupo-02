@@ -1,9 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { List } from '@material-ui/core';
 import { getEventos } from '../services/eventoService';
 import EventoRow from './eventoRow';
 import LoadingIndicator from './LoadingIndicator';
 import ErrorBar from './errorBar';
+import Topbar from './Topbar';
 
 export class EventoList extends Component {
 
@@ -24,7 +25,7 @@ export class EventoList extends Component {
 
     render() {
         const { loading, error } = this.state
-        return <Fragment>
+        return <Topbar volver={false}>
             <List dense={true}>
                 {this.state.eventos.map(evento =>
                     <EventoRow key={evento.descripcion} evento={evento} />
@@ -32,6 +33,6 @@ export class EventoList extends Component {
             </List>
             <LoadingIndicator loading={loading} />
             <ErrorBar error={error} />
-        </Fragment>
+        </Topbar>
     }
 }

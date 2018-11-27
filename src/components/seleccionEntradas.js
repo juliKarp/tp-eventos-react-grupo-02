@@ -56,29 +56,31 @@ export class SeleccionEntradas extends Component {
     }
 
     render() {
-        const { evento, history } = this.props;
+        const { evento } = this.props;
         const { loading, error, success } = this.state
 
         return (<Fragment>
-            <Grid item xs={6}>
-                <IconButton color="primary" disabled={this.state.cantidadDeseada === 0} onClick={() => this.decrementar()}>
+            <Grid item xs={4}>
+                <IconButton
+                    color="primary"
+                    disabled={this.state.cantidadDeseada === 0}
+                    onClick={() => this.decrementar()}>
                     <RemoveCircleIcon />
                 </IconButton>
                 {this.state.cantidadDeseada}
-                <IconButton color="primary" onClick={() => this.incrementar()}>
+                <IconButton
+                    color="primary"
+                    onClick={() => this.incrementar()}>
                     <AddCircleIcon />
                 </IconButton>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={4}>
                 <IconButton>
                     <AttachMoneyIcon />
                     {this.state.cantidadDeseada * evento.precio}
                 </IconButton>
             </Grid>
-            <Grid item xs={6}>
-                <Button variant="contained" onClick={() => history.push('/')}>Volver</Button>
-            </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={4}>
                 <Button variant="contained" color="primary" onClick={() => this.compraEntrada(evento)}>Comprar</Button>
             </Grid>
 

@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
+import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import TheDrawer from './TheDrawer';
@@ -33,16 +34,18 @@ class Topbar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isDrawerOpen: false
+      isDrawerOpen: false,
+      volver: this.props.volver
     }
 
     TheDrawer.defaultProps = {
-      toggleDrawer : this.handleDrawerToggle,
-      closeDrawer : this.handleDrawerClose
+      toggleDrawer: this.handleDrawerToggle,
+      closeDrawer: this.handleDrawerClose
     }
   }
 
   handleDrawerToggle = () => {
+    if (this.state.volver){ this.props.history.push('/') }
     this.setState(state => ({ isDrawerOpen: !state.isDrawerOpen }));
   };
 
@@ -52,7 +55,7 @@ class Topbar extends Component {
 
   render() {
     const { classes, children } = this.props;
-    const { isDrawerOpen } = this.state;
+    const { isDrawerOpen, volver } = this.state;
 
     return (
       <div className={classes.root}>
@@ -65,15 +68,16 @@ class Topbar extends Component {
               onClick={this.handleDrawerToggle}
               className={classes.menuButton}
             >
-              <MenuIcon />
+              {!volver && <MenuIcon />}
+              {volver && <KeyboardArrowLeftIcon />}
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
-              Event OS
+              Event OS {volver}
             </Typography>
           </Toolbar>
         </AppBar>
         <nav className={classes.drawer}>
-          <TheDrawer isOpen={isDrawerOpen}/>
+          <TheDrawer isOpen={isDrawerOpen} />
         </nav>
         <main className={classes.content}>
           <div className={classes.toolbar} />
